@@ -1,29 +1,29 @@
-# Python bytecode files
+
 *.pyc
 __pycache__/
 
-# Django database
+
 *.sqlite3
 /db.sqlite3
 
-# Virtual environment folder (common names: venv, env, .env)
+
 /venv/
 /env/
 .env
 
-# IDE-specific files (for example, if you're using PyCharm or VS Code)
+
 .idea/
 .vscode/
 
-# Logs and runtime files
+
 *.log
 *.pot
 *.pyc
 
-# Media and static files
+
 /media/
 /static/
 
-# Other unwanted files
+
 .DS_Store  # macOS
 Thumbs.db   # Windows
