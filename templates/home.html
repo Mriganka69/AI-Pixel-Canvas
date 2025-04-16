@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Home - Poster Editor{% endblock %}
+
+{% block content %}
+<h1 class="text-3xl font-bold text-center mb-4">Upload Poster</h1>
+
+<form method="POST" enctype="multipart/form-data" class="bg-white p-6 rounded shadow-md max-w-md mx-auto">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        Upload
+    </button>
+</form>
+
+{% if poster %}
+    <h2 class="text-xl mt-6 font-semibold text-center">Uploaded Poster:</h2>
+    <div class="flex justify-center mt-4">
+        <img src="{{ poster.image.url }}" alt="Uploaded Poster" class="w-1/2 rounded shadow-md" />
+    </div>
+{% endif %}
+{% endblock %}
