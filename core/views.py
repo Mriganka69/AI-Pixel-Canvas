@@ -1,20 +1,23 @@
-from django.shortcuts import render, redirect
-from .forms import PosterForm
-from .models import Poster
-from .utils.image_analysis import extract_text_and_colors
+from django.shortcuts import render
+from .forms import ImageUploadForm
 
+def upload_image(request):
+    uploaded_file_url = None
 
-import pytesseract
-
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-
-
-def home(request):
     if request.method == 'POST':
-        form = PosterForm(request.POST, request.FILES)
+        form = ImageUploadForm(request.POST, request.FILES)
         if form.is_valid():
-            poster = form.save()
-            return render(request, 'home.html', {'form': PosterForm(), 'poster': poster})
+            form.save()
+            uploaded_file_url = form.instance.image.url
     else:
-        form = PosterForm()
-    return render(request, 'home.html', {'form': form})
+        form = ImageUploadForm()
+
+    return render(request, 'image_upload.html', {
+        'form': form,
+        'uploaded_file_url': uploaded_file_url
+    })
+
+from django.shortcuts import render
+
+def upload_view(request):
+    return render(request, 'image_upload.html')

@@ -1,7 +1,12 @@
 from django import forms
-from .models import Poster
+from .models import ImageAsset  # Make sure you have the model
 
-class PosterForm(forms.ModelForm):
+class ImageUploadForm(forms.ModelForm):
     class Meta:
-        model = Poster
+        model = ImageAsset
         fields = ['image']
+
+from django import forms
+
+class ImageUploadForm(forms.Form):
+    image = forms.ImageField()
